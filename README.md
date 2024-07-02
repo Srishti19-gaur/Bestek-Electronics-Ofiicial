@@ -1,4 +1,6 @@
 This is the code repository of the Official Website of Bestek Electronics. The website currently has a responsive frontend developed using HTML, CSS, and JS. Users can visit the website and view the company's products and then directly connect with the owner to place their order.
+
+The website is fully responsive and can work on various screen sizes.
 <img width="959" alt="image" src="https://github.com/Srishti19-gaur/Bestek-Electronics-Ofiicial/assets/84332258/60b98591-c918-46d2-abc0-55967f18de67">
 <img width="959" alt="image" src="https://github.com/Srishti19-gaur/Bestek-Electronics-Ofiicial/assets/84332258/5a8c722b-5adb-445d-8ea4-7abe8656f0a2">
 <img width="959" alt="image" src="https://github.com/Srishti19-gaur/Bestek-Electronics-Ofiicial/assets/84332258/6da8e19c-fb10-404e-a4b5-667849df1f31">
