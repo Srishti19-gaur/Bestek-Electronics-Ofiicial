@@ -18,7 +18,7 @@ if(searchClose){
         searchContent.classList.remove('show-search')
     })
 }
-/*=============== LOGIN ===============*/
+// /*=============== LOGIN ===============*/
 
 // const loginButton = document.getElementById('login-button'),
 //       loginClose = document.getElementById('login-close'),
@@ -179,108 +179,3 @@ sr.reveal('.founder1__data', {origin: 'left'})
 sr.reveal('.founder1__img', {origin: 'right'})
 sr.reveal('.founder2__data', {origin: 'left'})
 sr.reveal('.founder2__img', {origin: 'right'})
-
-
-// FIREBASE AUTHENTICATION
-
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-  import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyAeq53gOM71XjrYhYC0yKCU1_9AxIFMjKA",
-    authDomain: "bestek-8311b.firebaseapp.com",
-    projectId: "bestek-8311b",
-    storageBucket: "bestek-8311b.appspot.com",
-    messagingSenderId: "379989274318",
-    appId: "1:379989274318:web:a8b2db06b523e47c98aa9f"
-  };
-
-  // Initialize Firebase
-   const app = initializeApp(firebaseConfig);
-  // Initialize Firebase Authentication and Firestore
-   const auth = firebase.auth(app);
-   const db = firebase.firestore(app);
-
-
-    const loginForm = document.querySelector('.login__form');
-    const signUpLink = document.querySelector('.login__signup a');
-    const forgotPasswordLink = document.querySelector('.login__forgot');
-    const loginMessage = document.getElementById('login-message');
-
-    const loginButton = document.getElementById('login-button'),
-        loginClose = document.getElementById('login-close'),
-        loginContent = document.getElementById('login-content')
-
-
-        // Log In functionality
-    loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-pass').value;
-
-    auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // Signed in 
-            console.log('User logged in:', userCredential.user);
-            // Redirect or show logged-in state
-        })
-        .catch((error) => {
-            console.error('Error logging in:', error);
-        });
-});
-
-    // Sign Up functionality
-    signUpLink.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    const email = prompt('Enter your email:');
-    const password = prompt('Enter your password:');
-
-    auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // Signed up 
-            console.log('User signed up:', userCredential.user);
-            // Save additional user data to Firestore if needed
-            db.collection('users').doc(userCredential.user.uid).set({
-                email: email,
-                // Add other user info here
-            });
-        })
-        .catch((error) => {
-            console.error('Error signing up:', error);
-        });
-});
-
-// Forgot Password functionality
-forgotPasswordLink.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    const email = prompt('Enter your email to reset password:');
-
-    auth.sendPasswordResetEmail(email)
-        .then(() => {
-            console.log('Password reset email sent');
-        })
-        .catch((error) => {
-            console.error('Error sending password reset email:', error);
-        });
-});
-
-    
-
-/* LOGIN show */
-if(loginButton){
-    loginButton.addEventListener('click', () =>{
-        loginContent.classList.add('show-login')
-    })
-}
-
-/* LOGIN hidden */
-if(loginClose){
-    loginClose.addEventListener('click', () =>{
-        loginContent.classList.remove('show-login')
-    })
-}
-
