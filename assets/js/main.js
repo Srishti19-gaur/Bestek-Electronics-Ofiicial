@@ -185,7 +185,7 @@ sr.reveal('.founder2__img', {origin: 'right'})
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-  import {getFirestore, doc, setDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
   
   const firebaseConfig = {
     apiKey: "AIzaSyAeq53gOM71XjrYhYC0yKCU1_9AxIFMjKA",
@@ -197,23 +197,24 @@ sr.reveal('.founder2__img', {origin: 'right'})
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+   const app = initializeApp(firebaseConfig);
   // Initialize Firebase Authentication and Firestore
-const auth = firebase.auth();
-const db = firebase.firestore();
+   const auth = firebase.auth(app);
+   const db = firebase.firestore(app);
 
-const loginForm = document.querySelector('.login__form');
-const signUpLink = document.querySelector('.login__signup a');
-const forgotPasswordLink = document.querySelector('.login__forgot');
-const loginMessage = document.getElementById('login-message');
 
-  const loginButton = document.getElementById('login-button'),
+    const loginForm = document.querySelector('.login__form');
+    const signUpLink = document.querySelector('.login__signup a');
+    const forgotPasswordLink = document.querySelector('.login__forgot');
+    const loginMessage = document.getElementById('login-message');
+
+    const loginButton = document.getElementById('login-button'),
         loginClose = document.getElementById('login-close'),
         loginContent = document.getElementById('login-content')
 
 
         // Log In functionality
-loginForm.addEventListener('submit', (e) => {
+    loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const email = document.getElementById('login-email').value;
@@ -230,8 +231,8 @@ loginForm.addEventListener('submit', (e) => {
         });
 });
 
-// Sign Up functionality
-signUpLink.addEventListener('click', (e) => {
+    // Sign Up functionality
+    signUpLink.addEventListener('click', (e) => {
     e.preventDefault();
 
     const email = prompt('Enter your email:');
