@@ -1,126 +1,111 @@
 
   
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAuth,  createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-  import { getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/10.12.2/firestore.js";
-
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
   
-  document.addEventListener('DOMContentLoaded', () => {
+  
+  
   const firebaseConfig = {
-    apiKey: "AIzaSyAeq53gOM71XjrYhYC0yKCU1_9AxIFMjKA",
-    authDomain: "bestek-8311b.firebaseapp.com",
-    projectId: "bestek-8311b",
-    storageBucket: "bestek-8311b.appspot.com",
-    messagingSenderId: "379989274318",
-    appId: "1:379989274318:web:a8b2db06b523e47c98aa9f"
+    apiKey: "AIzaSyAqgSugCce6_S6vzEdqrNeqWrZ21AowAFI",
+    authDomain: "bestek-be87e.firebaseapp.com",
+    projectId: "bestek-be87e",
+    storageBucket: "bestek-be87e.appspot.com",
+    messagingSenderId: "513915962093",
+    appId: "1:513915962093:web:46364de91c9cac8ffc02e4"
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-
-  const loginForm = document.querySelector('.login__form');
-  const signUpLink = document.querySelector('.login__signup a');
-  const forgotPasswordLink = document.querySelector('.login__forgot');
-  const loginMessage = document.getElementById('login-message');
   
-
-  function showMessage(message, type) {
-    loginMessage.textContent = message;
-    loginMessage.className = `login__message ${type}`; // type: success or error
-    loginMessage.style.display = 'block';
-    setTimeout(() => {
-        loginMessage.style.display = 'none';
-    }, 5000); // Hide message after 5 seconds
-}
-
-// Sign Up functionality
-signUpLink.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    const email = prompt('Enter your email:');
-    const password = prompt('Enter your password:');
-
-    createUserWithEmailAndPassword(auth, email, password)
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+  
+  const submitButton = document.getElementById("submit");
+  const signupButton = document.getElementById("sign-up");
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const main = document.getElementById("main");
+  const createacct = document.getElementById("create-acct")
+  
+  const signupEmailIn = document.getElementById("email-signup");
+  const confirmSignupEmailIn = document.getElementById("confirm-email-signup");
+  const signupPasswordIn = document.getElementById("password-signup");
+  const confirmSignUpPasswordIn = document.getElementById("confirm-password-signup");
+  const createacctbtn = document.getElementById("create-acct-btn");
+  
+  const returnBtn = document.getElementById("return-btn");
+  
+  var email, password, signupEmail, signupPassword, confirmSignupEmail, confirmSignUpPassword;
+  
+  createacctbtn.addEventListener("click", function() {
+    var isVerified = true;
+  
+    signupEmail = signupEmailIn.value;
+    confirmSignupEmail = confirmSignupEmailIn.value;
+    if(signupEmail != confirmSignupEmail) {
+        window.alert("Email fields do not match. Try again.")
+        isVerified = false;
+    }
+  
+    signupPassword = signupPasswordIn.value;
+    confirmSignUpPassword = confirmSignUpPasswordIn.value;
+    if(signupPassword != confirmSignUpPassword) {
+        window.alert("Password fields do not match. Try again.")
+        isVerified = false;
+    }
+    
+    if(signupEmail == null || confirmSignupEmail == null || signupPassword == null || confirmSignUpPassword == null) {
+      window.alert("Please fill out all required fields.");
+      isVerified = false;
+    }
+    
+    if(isVerified) {
+      createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
         .then((userCredential) => {
-            // Signed up 
-            console.log('User signed up:', userCredential.user);
-            showMessage('Account created successfully!', 'success');
-            // Save additional user data to Firestore if needed
-            db.collection('users').doc(userCredential.user.uid).set({
-                email: email,
-                // Add other user info here
-            });
-        })
-        .catch((error) => {
-            console.error('Error signing up:', error);
-            showMessage(error.message, 'error');
-        });
-});
-
-
-
-// Log In functionality
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-pass').value;
-
-
+        // Signed in 
+        const user = userCredential.user;
+        // ...
+        window.alert("Success! Account created.");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+        window.alert("Error occurred. Try again.");
+      });
+    }
+  });
+  
+  submitButton.addEventListener("click", function() {
+    email = emailInput.value;
+    console.log(email);
+    password = passwordInput.value;
+    console.log(password);
+  
     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            console.log('User logged in:', userCredential.user);
-            showMessage('Successfully logged in!', 'success');
-            // Redirect or show logged-in state
-        })
-        .catch((error) => {
-            console.error('Error logging in:', error);
-            showMessage(error.message, 'error');
-        });
-});
-
-
-// Forgot Password functionality
-forgotPasswordLink.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    const email = prompt('Enter your email to reset password:');
-
-    sendPasswordResetEmail(auth, email)
-        .then(() => {
-            console.log('Password reset email sent');
-            showMessage('Password reset email sent!', 'success');
-        })
-        .catch((error) => {
-            console.error('Error sending password reset email:', error);
-            showMessage(error.message, 'error');
-        });
-});
-
-
-/*=============== LOGIN ===============*/
-
-const loginButton = document.getElementById('login-button'),
-      loginClose = document.getElementById('login-close'),
-      loginContent = document.getElementById('login-content')
-
-
-
-/* LOGIN show */
-if(loginButton){
-    loginButton.addEventListener('click', () =>{
-        loginContent.classList.add('show-login')
-    })
-}
-
-/* LOGIN hidden */
-if(loginClose){
-    loginClose.addEventListener('click', () =>{
-        loginContent.classList.remove('show-login')
-    })
-}
-
-});
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log("Success! Welcome back!");
+        window.alert("Success! Welcome back!");
+        window.location.href = "index.html"; // Redirect to homepage
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("Error occurred. Try again.");
+        window.alert("Error occurred. Try again.");
+      });
+  });
+  
+  signupButton.addEventListener("click", function() {
+      main.style.display = "none";
+      createacct.style.display = "block";
+  });
+  
+  returnBtn.addEventListener("click", function() {
+      main.style.display = "block";
+      createacct.style.display = "none";
+  });

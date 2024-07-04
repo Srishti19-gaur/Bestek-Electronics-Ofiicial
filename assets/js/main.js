@@ -18,7 +18,7 @@ if(searchClose){
         searchContent.classList.remove('show-search')
     })
 }
-// /*=============== LOGIN ===============*/
+/*=============== LOGIN ===============*/
 
 // const loginButton = document.getElementById('login-button'),
 //       loginClose = document.getElementById('login-close'),

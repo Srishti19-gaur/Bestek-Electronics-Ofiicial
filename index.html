@@ -16,8 +16,6 @@
       <!--=============== CSS ===============-->
       <link rel="stylesheet" href="assets/css/styles.css">
 
-      
-
 
       <title>Bestek Electronics</title>
    </head>
@@ -67,7 +65,8 @@
                <!-- Search Button -->
                <i class="ri-search-line search-button" id="search-button"></i>
                <!-- Login Button -->
-               <i class="ri-user-line login-button" id="login-button"></i>
+               <!-- <i class="ri-user-line login-button" id="login-button"></i> -->
+               <a href="login.html"><i class="ri-user-line login-button" id="login-button"></i></a>
                <!-- Theme button -->
                <i class="ri-moon-line change-theme" id="theme-button"></i>
             </div>
@@ -85,10 +84,11 @@
       </div>
 
       <!--==================== LOGIN ====================-->
-      <div class="login grid" id="login-content">
+
+      <!-- <div class="login grid" id="login-content">
          <form action="" class="login__form grid">
             <h3 class="login__title">Log In</h3>
-            <div class="login__group grid">
+            <div class="login__group grid"> 
                <div>
                   <label for="login-email" class="login__label">Email</label>
                   <input type="email" placeholder="Write your Email" id="login-email" class="login__input">
@@ -97,7 +97,7 @@
                <div>
                   <label for="login-pass" class="login__label">Password</label>
                   <input type="password" placeholder="Enter your password" id="login-pass" class="login__input">
-               </div>
+               </div> 
             </div>
 
             <div>
@@ -109,12 +109,34 @@
                   You forgot your password
                </a>
 
-               <button type = "submit" class="login__button button">Log In</a>
+               <button type = "submit" class="login__button button">Log In</button> 
+               
             </div>
-            <div id="login-message" class="login__message"></div> <!-- Message container -->
-         </form>
+            <div id="login-message" class="login__message"></div>  Message container -->
+         <!-- </form>
          <i class="ri-close-line login__close" id ="login-close"></i>
-      </div>
+      </div> --> 
+
+      <!-- <div class = "login-container">
+         <div id= "main">
+            <h1>Sign In</h1>
+               <input id = "email" type = "text" placeholder = "Email"></input>
+               <input id = "password" type = "password" placeholder = "Password"></input>
+               <button id = "submit">Submit</button>
+               <p><span>or</span></p>
+               <button id = "sign-up">Sign Up</button>
+         </div>
+         
+         <div id = "create-acct">
+            <h1>Create an Account</h1>
+<input id = "email-signup" type = "text" placeholder = "Email *"></input>
+<input id = "confirm-email-signup" type = "email" placeholder = "Confirm Email *"></input>
+<input id = "password-signup" type = "password" placeholder = "Password *"></input>
+<input id = "confirm-password-signup" type = "password" placeholder = "Confirm Password *"></input>
+<button id = "create-acct-btn">Create Account</button>
+<button id = "return-btn">Return to Login</button>
+         </div>
+      </div> -->
 
       <!--==================== MAIN ====================-->
       <main class="main">
@@ -522,12 +544,10 @@
       <!--=============== MAIN JS ===============-->
       <script src="assets/js/main.js"></script>
 
-      <!-- =============== LOGIN JS ===============
-      <script src="assets/js/login.js"></script> -->
+      <!-- Google Sign In -->
+      <!-- <script type="module" src="assets/js/login.js"></script> -->
 
-      <!-- ====== FIREBASE SCRIPT ====== -->
-      
-      <script type = "module" src="assets/js/login.js"></script>
+      <script type = "module" src = "assets/js/login.js"></script>
 
       <!-- ==== TIDIO CHATBOT === -->
       <script src="//code.tidio.co/se4icmgmexfdsukqqjm2csgxjwvbv6a3.js" async></script>
