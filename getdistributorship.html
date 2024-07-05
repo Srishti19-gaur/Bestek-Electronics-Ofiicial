@@ -19,63 +19,65 @@
       <title>Bestek Electronics</title>
    </head>
    <body>
-    <form class="my-form">
-        <div class="container">
-          <h1>Get in touch!</h1>
-          <ul>
-            <li>
-              <select>
-                <option selected disabled>-- Please choose an option --</option>
-                <option>Retailer</option>
-                <option>Wholesaler</option>
-                <option>Online Seller</option>
-                <option>Other</option>      
-              </select>
-            </li>
-            <li>
-              <div class="grid grid-2">
-                <input type="text" placeholder="Name" required>  
-                <input type="text" placeholder="Surname" required>
-              </div>
-            </li>
-            <li>
-              <div class="grid grid-2">
-                <input type="email" placeholder="Email" required>  
-                <input type="tel" placeholder="Phone">
-              </div>
-            </li>    
-            <li>
-              <textarea placeholder="Kindly Share Your Experience in Business and Deals with Turnover"></textarea>
-            </li>   
-            <li>
-              <input type="checkbox" id="terms">
-              <label for="terms">I have read and agreed with <a href="">the terms and conditions.</a></label>
-            </li>  
-            <li>
-              <div class="grid grid-3">
-                <div class="required-msg">REQUIRED FIELDS</div>
-                <button class="btn-grid" type="submit" disabled>
-                  <span class="back">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/email-icon.svg" alt="">
-                  </span>
-                  <span class="front">SUBMIT</span>
-                </button>
-                <button class="btn-grid" type="reset" disabled>
-                  <span class="back">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/eraser-icon.svg" alt="">
-                  </span>
-                  <span class="front">RESET</span>
-                </button> 
-              </div>
-            </li>    
-          </ul>
-        </div>
-      </form>
-      <footer>
-        <div class="container">
-          </small>
-        </div>
-      </footer>
+     
+
+      <!-- =======FORM========= -->
+      <div class="flex items-center min-h-screen bg-gray-50 dark:bg-gray-900">
+         <div class="container mx-auto">
+           <div class="max-w-md mx-auto my-10 bg-white p-5 rounded-md shadow-sm">
+             <div class="text-center">
+               <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">
+                 Become Our Distributor
+               </h1>
+               <p class="text-gray-400 dark:text-gray-400">
+                 Fill up the form below, and we will get in touch!
+               </p>
+             </div>
+             <div class="m-7">
+               <form action="https://api.web3forms.com/submit" method="POST" id="form">
+                 <input type="hidden" name="access_key" value="5bad1e3d-7125-4de1-a25e-42364fef03f8" />
+                 <input type="hidden" name="subject" value="New Submission from Web3Forms" />
+                 <input type="checkbox" name="botcheck" id="" style="display: none;" />
+       
+                 <div class="mb-6">
+                   <label for="name" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Full Name</label>
+                   <input type="text" name="name" id="name" placeholder="John Doe" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                 </div>
+                 <div class="mb-6">
+                   <label for="email" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Email Address</label>
+                   <input type="email" name="email" id="email" placeholder="you@company.com" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                 </div>
+                 <div class="mb-6">
+                   <label for="phone" class="text-sm text-gray-600 dark:text-gray-400">Phone Number</label>
+                   <input type="text" name="phone" id="phone" placeholder="+1 (555) 1234-567" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" />
+                 </div>
+                 <div class="mb-6">
+                  <label for="category" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Category</label>
+                  <select name="category" id="category" required class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500">
+                    <option selected disabled>-- Please choose an option --</option>
+                    <option>Retailer</option>
+                    <option>Wholesaler</option>
+                    <option>Online Seller</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                 <div class="mb-6">
+                   <label for="message" class="block mb-2 text-sm text-gray-600 dark:text-gray-400">Your Business Experience</label>
+       
+                   <textarea rows="5" name="message" id="message" placeholder="Describe in brief your business deals and turnover" class="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" required></textarea>
+                 </div>
+                 <div class="mb-6">
+                   <button type="submit" class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none">
+                     Submit
+                   </button>
+                 </div>
+                 <p class="text-base text-center text-gray-400" id="result"></p>
+               </form>
+             </div>
+           </div>
+         </div>
+       </div>
     <!--==================== FOOTER ====================-->
 <footer class="footer" id="footer">
          
